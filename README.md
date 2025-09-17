@@ -1,5 +1,7 @@
 # https://rafa-pradipta-foolsportswear.pbp.cs.ui.ac.id/
 
+Tugas 2:
+
 1. Membuat sebuah proyek Django baru
     Untuk step ini, kita harus membuat direktori baru dan memasukkan text file requirements yang diisi dengan semua dependencies yang akan dibutuh, selanjutnya kita bikin project django di direktori tersebut, selanjutnya kita membuat file env dan env.prod untuk set variabel environment untuk set konfigurasi, kredensial database, API keys, dll, ini memungkinkan kita untuk menjalankan kode di environment tanpa harus mengubah kode kita. .env akan dipakai buat testing dan development, ini akan pakai SQLite, tetapi .env.prod dipakai untuk deployment, ini akan memakai PostgreSQL.
 
@@ -48,3 +50,34 @@ manage.py migrate -> membaca file migration dan apply perubahan kepada skema dat
 
 6. Apakah ada feedback untuk asisten dosen tutorial 1 yang telah kamu kerjakan sebelumnya?
     Tutorial jelas dan mudah dilakukan.
+
+
+
+Tugas 3:
+1. Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?
+Agar platform kita bisa menerima data dari input user dan bisa mengirim data agar bisa menampilkan data
+
+2. Menurutmu, mana yang lebih baik antara XML dan JSON? Mengapa JSON lebih populer dibandingkan XML?
+    Json lebih baik dan populer dari JSON
+    - JSON memakai javascript yang lebih umum dipakai
+    - Lebih mudah untuk dilihat/dibaca
+    - Parsing yang lebih cepat dan bisa dilakukan dengan fungsi javascript
+    - memakai mapping yang menunjukkan key-value pairing yang lebih mudah dibaca 
+
+3. Jelaskan fungsi dari method is_valid() pada form Django dan mengapa kita membutuhkan method tersebut?
+Ngecek input user/form dan memastikan kalau input benar dan gaada error, kalau inputnya udah valid baru akan disave ke database, tapi kalau invalid data yang memilki error tidak akan di save di database
+
+4. Mengapa kita membutuhkan csrf_token saat membuat form di Django? Apa yang dapat terjadi jika kita tidak menambahkan csrf_token pada form Django? Bagaimana hal tersebut dapat dimanfaatkan oleh penyerang?
+Menjaga dari CSRF attack, dimana penyerang bisa membuat request menggunakan kredensial user lain. Dengan CSRF, website akan ngecek kalau request yang dikirim memilki token, kalau tidak memilki token tsb, request tidak akan diterima
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+- Menyalakan virtual environment
+- mengganti dirs menjadi base dir/templates agar memakai base.html sebagai basis/template utama untuk html kita
+- membuat file baru forms.py di main yang membuat form yang menerima product baru
+- membuat beberapa fungsi baru di views.py, ada yang untuk membuat form baru, menampilkan form, dan untuk melihat xml/json dan filter darinya dengan primary key
+- mengganti urls.py untuk menambahkan path yang mengakses fungsi baru yang kita buat
+- cek dengan runserver di localhost kalau semua yang digganti bekerja dengan benar
+- push ke pws dan repository git
+
+6. Apakah ada feedback untuk asdos di tutorial 2 yang sudah kalian kerjakan?
+bagus dan jelas.
