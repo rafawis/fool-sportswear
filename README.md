@@ -82,3 +82,49 @@ Menjaga dari CSRF attack, dimana penyerang bisa membuat request menggunakan kred
 6. Apakah ada feedback untuk asdos di tutorial 2 yang sudah kalian kerjakan?
 bagus dan jelas.
 
+Tugas 4:
+1.  Apa itu Django AuthenticationForm? Jelaskan juga kelebihan dan kekurangannya.
+
+2. Apa perbedaan antara autentikasi dan otorisasi? Bagaiamana Django mengimplementasikan kedua konsep tersebut?
+Authentikasi adalah ketika kita ngecek kalau user yang lagi login adalah user benerannya, bukan penyerang.
+Otorisasi adalah ketika kita memilih apa saja yang bisa dilakukan oleh suatu user/role.
+
+3. Apa saja kelebihan dan kekurangan session dan cookies dalam konteks menyimpan state di aplikasi web?
+
+Cookies:
+- Lebih ringan
+- Cepat diakses
+- Disimpan sampai expire atau didelete
+
+Cons:
+- Bisa dimodify user
+- Mudah dipakai penyerang untuk hijack, XSS, CSRF, etc.
+
+Session:
+Pros:
+- Bisa menyimpan banyak tipe data dan
+- Data disimpan di server sehingga lebih aman
+- Langsung dihapus ketika user logout/tutup browser
+
+Cons:
+- Berat di server untuk load dan storage karena
+
+4. Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai? Bagaimana Django menangani hal tersebut?
+Ada risiko, misalnya XSS attack, di attack ini, penyerang akan exploit situs web untuk mengambil cookie dari user dan memakai cookie tsb untuk mengakses data sensitif user dan hal-hal lain. Untuk ini, django memiliki beberapa cara untuk menangani penyerangan, ada CSRF token yang membantu authentikasi kalau yang mengirim request dari user asli, bukan dari penyerang.
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+Step pertama adalah untuk membuat fungsi registrasi, fungsi ini membuat form dan meminta user untuk mengisi untuk membuat user baru, jika semua yang diisi udah benar, form dan user akan disave. Setelah membuat fungsi kita juga harus membuat html baru khusus untuk registrasi dan masukkan ke urls. Disini kita harus mengimpor messages dan UserCreationForm dari library Django
+
+
+step kedua adalah untuk membuat fungsi login, disini kita meminta login info user dan akan cek di database kalau ada usernya, disini kita juga harus membuat url dan html baru. Untuk ini kita harus mengimpor AuthenticationForm, authenticate, dan login dari django.contrib.auth
+
+step ketiga untuk membuat fungsi logout, fungsi ini akan logout user, dan unutk ini kita hanya butuh membuat button untuk logout di halaman main.html. disini kita harus mengimpor logout
+
+step keempat adalah authentikasi, disini kita mengimpor login_required jadi untuk akses main dan untuk melihat product, user harus login dulu. 
+
+Step kelima kita menyimpan cookies user, untuk ini kita mengimpor  datetime, HttpResponseRedirect dan menyimpan kapan user login ke web kita. Browser akan menyimpan kapan kita login dan akan ditampilkan di web.
+
+Step keenam adalah untuk menggabungkan user dan product, disini kita akan mengubah class Product untuk menyimpan user dan akan menampilkan user yang membuat post/listing. Disini kita harus mengimpor User ke models, dan membuat user jadi atribut model Product. Selanjutnya kita di views akan menyimpan user yang create product baru, terus kita menambah filtering ke show product agar user bisa memilih antara melihat semua produk atau hanya yang dibuat user. Terakhir kita harus mengubah html main untuk menampilkan filtering tsb dan mengubah product_detail untuk menampilkan author/seller.
+
+Step terakhir adalah untuk push ke git dan pws.
+
