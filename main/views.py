@@ -15,7 +15,6 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 def register(request):
     form = UserCreationForm()
-
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -26,7 +25,7 @@ def register(request):
     return render(request, 'register.html', context)
 
 def login_user(request):
-   if request.method == 'POST':
+    if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
 
         if form.is_valid():
@@ -36,10 +35,10 @@ def login_user(request):
             response.set_cookie('last_login', str(datetime.datetime.now()))
             return response
 
-   else:
+    else:
         form = AuthenticationForm(request)
-        context = {'form': form}
-        return render(request, 'login.html', context)
+    context = {'form': form}
+    return render(request, 'login.html', context)
 
 def logout_user(request):
     logout(request)
@@ -50,9 +49,10 @@ def logout_user(request):
 @login_required(login_url='/login')
 def show_main(request):
     filter_type = request.GET.get("filter", "all")  # default 'all'
-
     if filter_type == "all":
         product_list = Product.objects.all()
+    elif filter_type == "featured":
+        product_list = Product.objects.filter(is_featured=True)
     else:
         product_list = Product.objects.filter(user=request.user)
     context = {
@@ -78,6 +78,26 @@ def create_product(request):
         'form': form
     }
     return render(request, "create_product.html", context)
+
+
+def edit_product(request, id):
+    product = get_object_or_404(Product, pk=id)
+    form = ProductForm(request.POST or None, instance=product)
+    if form.is_valid() and request.method == 'POST':
+        form.save()
+        return redirect('main:show_main')
+
+    context = {
+        'form': form
+    }
+
+    return render(request, "edit_product.html", context)
+
+def delete_product(request, id):
+    product = get_object_or_404(Product, pk=id)
+    product.delete()
+    return HttpResponseRedirect(reverse('main:show_main'))
+
 
 @login_required(login_url='/login')
 def show_product(request, id):

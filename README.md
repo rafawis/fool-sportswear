@@ -128,3 +128,22 @@ Step keenam adalah untuk menggabungkan user dan product, disini kita akan mengub
 
 Step terakhir adalah untuk push ke git dan pws.
 
+
+
+Tugas 5:
+# 1. Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+    Yang paling diprioritas adalah inline style, dimana style langsung dimasukkin di dalam suatu elemen, setelahnya ada beberapa selector, darinya yang terprioritas adalah id selector, dilanjutkan dengan class, attribute, dan pseudo-class. Terakhir elemen dan pseudo-element selector.
+
+# 2. Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design, serta jelaskan mengapa!
+    Responsive design sangat penting karena jaman sekarang hampir semua orang memiliki handphone, dan kemungkinan besar user yang akan memakai website kita akan menggunakan handphone. karena itu, kita harus memastikan display di handphone masih bagus dan mudah dipakai. Contoh dari sini adalah navbar, dimana di desktop akan display opsi menu di baris, kalau di handphone akan display opsi menu di drop down menu. Selain itu, website kita harus menyesuaikan width dan layout dengan device user. Contoh aplikasi yang sudah mengimplementasi ini adalah X/Twitter, dimana desktop dan mobile memiliki interface yang beda, di desktop opsi menu di samping dan ditampilkan vertikal , dan search menu di top-right. tetapi di handphone, opsi menu dibawah, ditampilkan vertikal, dengan search sebagai opsi menu. Aplikasi yang belum menerapkan responsive design biasanya website-website lama, misalnya website materi belajar dulu.
+
+# 3. Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+    Content, padding, border, dan margin bisa dilihat sebagai kotak dengan 4 lapis, lapis pertama adalah content, selanjutnya padding, ini memberi jarak antara content dan border, selanjutnya adalah border, ini biasanya membuat garis, dan terakhir margin, ini memberi jarak antara border dengan elemen-elemen lain. Contohnya misalnya padding 5px,  border 1px purple, margin 10px. content akan dipaling dalem, dilanjuti dengan jarak 5px, dilanjuti dengan border berwarna ungu dengan kelebaran 1px, dan terakhir jarak antara elemen ini dengan elemen lain sebanyak 10px.
+# 4. Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+    flexbox dan grid adalah cara untuk mengurutkan elemen/item dalem baris atau kolom. bedanya adalah flexbox hanya 1 dimensi, milih antara baris ato kolom, tetapi untuk grid 2 dimensi, membuat baris dan kolom. Untuk flex, kita memakainya di navbar, dimana kita mau display buttonnya dalam baris horizontal. Untuk grid, contoh dari sini adalah product listnya, dimana kita display semua product dalam grid.
+# 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+    - Membuat implementasi untuk menghapus dan edit product -> membuat fungsi baru di views, implementasikan views di urls, membuat button edit dan delete di card product, dan membuat html baru untuk edit produk
+    - Kustomisasi html dengan CSS tailwind, untuk setup awal, menambahkan <script src="https://cdn.tailwindcss.com"> kepada base.html, selanjutnya membuat folder static dan dalemnya membuat folder css yang mengandung file global.css. selanjutnya kita masukkin styling kedalem file tsb. Untuk ini kita masukkin styling untuk input-input form.
+    - Kita mengedit semua html untuk mengimplementasi styling-styling baru untukmembuat website lebih menarik,
+    -mengganti product list untuk memakai card_product untuk displaynya, ini dibuat dalam html pisah, tetapi bisa didisplay dalam main.html. card_product ini menunjukkan thumbnail, harga, nama, deskripsi, dan button edit dan delete.
+    - membuat navbar untuk menunjukkan nama store, home, dan create product.HTML ini dibuat di root templates. HTML ini memiliki dua display berbeda bergantung dengan device yang dipakai user. Kalau user memakai mobile device, akan ada drop-down menu untuk display home, createproduct, logout, dll.
