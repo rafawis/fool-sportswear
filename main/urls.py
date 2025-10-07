@@ -1,5 +1,5 @@
 from django.urls import path
-from main.views import register,login_user,logout_user,show_main, create_product, edit_product, delete_product,show_product, show_xml, show_json,show_xml_by_id,show_json_by_id
+from main.views import register_ajax, login_ajax,register,login_user,logout_user,show_main, create_product,add_product_entry_ajax, delete_product_ajax,edit_product, edit_product_entry_ajax, delete_product,show_product, show_xml, show_json,show_xml_by_id,show_json_by_id
 
 app_name = 'main'
 
@@ -16,5 +16,10 @@ urlpatterns = [
     path('json/', show_json, name='show_json'),
     path('xml/<str:product_id>/', show_xml_by_id, name='show_xml_by_id'),
     path('json/<str:product_id>/', show_json_by_id, name='show_json_by_id'),
+    path('add-product-ajax', add_product_entry_ajax, name='add_product_entry_ajax'),
+    path('product/<uuid:id>/edit-product-ajax', edit_product_entry_ajax, name='edit_product_entry_ajax'),
+    path('delete-product-ajax/<uuid:id>/', delete_product_ajax, name='delete_product_ajax'),
+    path('register-ajax/', register_ajax, name='register_ajax'),
+    path('login-ajax/', login_ajax, name='login_ajax'),
 ]
 

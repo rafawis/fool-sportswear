@@ -45,3 +45,7 @@
     border-color: #c06dc0;
     box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
 }
+#toast {
+  background-color: #9333ea; /* Tailwind's purple-600 */
+  color: #fff;
+}

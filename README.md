@@ -147,3 +147,17 @@ Tugas 5:
     - Kita mengedit semua html untuk mengimplementasi styling-styling baru untukmembuat website lebih menarik,
     -mengganti product list untuk memakai card_product untuk displaynya, ini dibuat dalam html pisah, tetapi bisa didisplay dalam main.html. card_product ini menunjukkan thumbnail, harga, nama, deskripsi, dan button edit dan delete.
     - membuat navbar untuk menunjukkan nama store, home, dan create product.HTML ini dibuat di root templates. HTML ini memiliki dua display berbeda bergantung dengan device yang dipakai user. Kalau user memakai mobile device, akan ada drop-down menu untuk display home, createproduct, logout, dll.
+
+
+Tugas 6:
+
+# 1. Apa perbedaan antara synchronous request dan asynchronous request?
+    Asynchronous request adalah process dimana ketika process A memanggil process B, process A bisa lanjut mengerjakan process A, tetapi kalau synchronous request, Process A harus menunggu process B untuk mengasih response, baru lanjut
+# 2. Bagaimana AJAX bekerja di Django (alur request–response)?
+    Pertama, AJAX mengirim request, misalnya dari contoh kita, ketika kita bikin product baru, django akan menerima request terus process request tersebut, kemudian django mengirim jsonresponse, dan ajax/javascript akan mengupdate page tanpa butuh refresh
+# 3. Apa keuntungan menggunakan AJAX dibandingkan render biasa di Django?
+    AJAX bisa update page tanpa butuh reload dan lebih cepat, tetapi untuk render ketika ingin memasukan/update data, user harus refresh untuk dapet data baru.
+# 4. Bagaimana cara memastikan keamanan saat menggunakan AJAX untuk fitur Login dan Register di Django?
+    memastikan pemakaian strip tags di setiap input text. Ini memastikan bahwa user gabisa memasukkan kode yang bisa dijalankan di kdoe kita, misalnya di salah satu input, user memasukkan kode untuk button, strip tags akan strip kode bahaya dan meninggalkan text yang tidak berbahaya.
+# 5. Bagaimana AJAX mempengaruhi pengalaman pengguna (User Experience) pada website?
+    AJAX mempengaruhi user experience dengan response time yang lebih cepat, dan website tidak perlu direload untuk data baru, bisa langsung sendiri dynamically mengupdate data.
