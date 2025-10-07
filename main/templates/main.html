@@ -121,7 +121,7 @@ const productGridContainer = document.getElementById('grid');
     }
      function confirmDeleteProduct(id, name) {
         productIdToDelete = id;
-        deleteMessage.innerHTML = `Apakah Anda yakin ingin menghapus produk **${name}**? Aksi ini tidak dapat dibatalkan.`;
+        deleteMessage.innerHTML = `Are you sure you want to delete ${name}? This action cannot be undone.`;
         deleteModal.classList.remove('hidden');
         deleteModal.classList.add('flex');
     }
